@@ -1,0 +1,83 @@
+@font-face {
+    font-family: rickMortyFont;
+    src: url("../fonts/get_schwifty.ttf");
+    }
+.body{
+    background-image: url(../img/imgBg.png);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Ubuntu;
+    overflow: overlay;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(201, 95, 233);
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+.header{
+    height: 10vh;
+}
+.header__h1{
+    color: aliceblue;
+    font-family: rickMortyFont;
+    font-size: 9vh;
+}
+.main{
+    display: flex;
+}
+.main__section{
+    height: 90vh;
+}
+.main__lft{
+    color: aliceblue;
+    font-size: medium;
+}
+
+.main__lftEpi:hover{
+    color: rgb(125, 190, 190);
+    font-size: medium;
+    scale: 1.02;
+    cursor: pointer;
+}
+.main__rgt{
+    height: 90vh;
+}
+.main__rgtup{
+    height: 20%;
+    color: aliceblue;
+}
+.locations:hover{
+    color: rgb(125, 190, 190);
+    cursor: pointer;
+}
+.main__rgtdw{
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+    gap: 2vw;
+}
+
+/* bootstrap */
+.card{
+    background-color: rgba(201, 95, 233);
+    opacity: 0.8;
+}
+.card:hover{
+    scale: 1.05;
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+
