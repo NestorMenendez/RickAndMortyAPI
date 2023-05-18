@@ -26,14 +26,14 @@ function fetchEpisodes(page) {
                 const arrayEpisodes = dataResponse.results;
                 return arrayEpisodes;
             }
-            else if (requestResponse.status === 401) {
-                console.log("Error durante la carga");
+            else if (requestResponse.status === 400) {
+                console.log("400 Bad Request");
             }
             else if (requestResponse.status === 404) {
-                console.log("Referencia no encontrada");
+                console.log("404 Not found");
             }
             else {
-                console.log("Excepción no controlada");
+                console.log("Other errors");
             }
         }
         catch (error) {
@@ -49,14 +49,14 @@ function fetchOneEpisode(id) {
                 const Episode = yield requestResponse.json();
                 return Episode;
             }
-            else if (requestResponse.status === 401) {
-                console.log("Error durante la carga");
+            else if (requestResponse.status === 400) {
+                console.log("400 Bad Request");
             }
             else if (requestResponse.status === 404) {
-                console.log("Referencia no encontrada");
+                console.log("404 Not found");
             }
             else {
-                console.log("Excepción no controlada");
+                console.log("Other errors");
             }
         }
         catch (error) {
@@ -72,14 +72,14 @@ function fetchCharacter(id) {
                 const Character = yield requestResponse.json();
                 return Character;
             }
-            else if (requestResponse.status === 401) {
-                console.log("Error durante la carga");
+            else if (requestResponse.status === 400) {
+                console.log("400 Bad Request");
             }
             else if (requestResponse.status === 404) {
-                console.log("Referencia no encontrada");
+                console.log("404 Not found");
             }
             else {
-                console.log("Excepción no controlada");
+                console.log("Other errors");
             }
         }
         catch (error) {
@@ -97,14 +97,14 @@ function fetchLocation(locationName) {
                 const location = arrayLocation[0];
                 return location;
             }
-            else if (requestResponse.status === 401) {
-                console.log("Error durante la carga");
+            else if (requestResponse.status === 400) {
+                console.log("400 Bad Request");
             }
             else if (requestResponse.status === 404) {
-                console.log("Referencia no encontrada");
+                console.log("404 Not found");
             }
             else {
-                console.log("Excepción no controlada");
+                console.log("Other errors");
             }
         }
         catch (error) {
@@ -129,6 +129,7 @@ function createListEpisodes(page) {
 function btnAddEpisodes() {
     return __awaiter(this, void 0, void 0, function* () {
         if ((listEpisodes === null || listEpisodes === void 0 ? void 0 : listEpisodes.childElementCount) === undefined) {
+            console.log("Internal error (ref:createListEpisodes)");
         }
         else if ((listEpisodes === null || listEpisodes === void 0 ? void 0 : listEpisodes.childElementCount) < 25) {
             yield createListEpisodes(2);

@@ -26,12 +26,12 @@ async function fetchEpisodes (page: number){
             const dataResponse = await requestResponse.json();
             const arrayEpisodes: Episode[] = dataResponse.results;
             return arrayEpisodes;
-        }else if (requestResponse.status===401){
-            console.log ("Error durante la carga");
+        }else if (requestResponse.status===400){
+            console.log ("400 Bad Request");
         }else if (requestResponse.status===404){
-            console.log ("Referencia no encontrada");
+            console.log ("404 Not found");
         }else {
-            console.log ("Excepción no controlada");
+            console.log ("Other errors");
         }
     }
     catch(error) {
@@ -44,12 +44,12 @@ async function fetchOneEpisode (id: number){
         if(requestResponse.status===200){
             const Episode: Episode = await requestResponse.json();
             return Episode;
-        }else if (requestResponse.status===401){
-            console.log ("Error durante la carga");
+        }else if (requestResponse.status===400){
+            console.log ("400 Bad Request");
         }else if (requestResponse.status===404){
-            console.log ("Referencia no encontrada");
+            console.log ("404 Not found");
         }else {
-            console.log ("Excepción no controlada");
+            console.log ("Other errors");
         }
     }
     catch(error) {
@@ -62,21 +62,18 @@ async function fetchCharacter (id: number){
         if(requestResponse.status===200){
             const Character: Character = await requestResponse.json();
             return Character;
-        }else if (requestResponse.status===401){
-            console.log ("Error durante la carga");
+        }else if (requestResponse.status===400){
+            console.log ("400 Bad Request");
         }else if (requestResponse.status===404){
-            console.log ("Referencia no encontrada");
+            console.log ("404 Not found");
         }else {
-            console.log ("Excepción no controlada");
+            console.log ("Other errors");
         }
     }
     catch(error) {
         console.log(error);
     }
 }
-
-
-
 async function fetchLocation (locationName: string) {
     try{
         const requestResponse = await fetch (`https://rickandmortyapi.com/api/location/?name=${locationName}`);
@@ -85,12 +82,12 @@ async function fetchLocation (locationName: string) {
             const arrayLocation = dataResponse.results;
             const location: Location = arrayLocation[0];
             return location;
-        }else if (requestResponse.status===401){
-            console.log ("Error durante la carga");
+        }else if (requestResponse.status===400){
+            console.log ("400 Bad Request");
         }else if (requestResponse.status===404){
-            console.log ("Referencia no encontrada");
+            console.log ("404 Not found");
         }else {
-            console.log ("Excepción no controlada");
+            console.log ("Other errors");
         }
     }
     catch(error) {
@@ -110,9 +107,8 @@ async function createListEpisodes (page: number) {
     });    
 };
 async function btnAddEpisodes () {
-
     if(listEpisodes?.childElementCount===undefined){
-        // Posible modal informando del problema
+        console.log("Internal error (ref:createListEpisodes)")
     }else if(listEpisodes?.childElementCount<25){
         await createListEpisodes(2);
     }else if(listEpisodes?.childElementCount>25 && listEpisodes?.childElementCount<45){
@@ -241,7 +237,6 @@ async function createLocationDescription (this: HTMLElement) {
         if (mainRgtDw){
             mainRgtDw.innerHTML="";
         }
-
         mainRgtUp?.setAttribute("style","height : 15%");
         mainRgtDw?.setAttribute("style","height : 85%");
 
@@ -281,20 +276,7 @@ async function createLocationDescription (this: HTMLElement) {
                 charCard.addEventListener("click", createCharacterDescription);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
 }
 
 
